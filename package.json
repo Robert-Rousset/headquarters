@@ -1,12 +1,25 @@
 {
-  "name": "Headquarters",
+  "name": "headquarters",
   "version": "1.0.0",
   "description": "An app to help students stay on top of deadlines and get motivated to study!!!!!!!!",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/index.js",
+    "watch": "nodemon server.js"
   },
   "keywords": [],
   "author": "Robert Rousset, Shelby Pignat, John Barker",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "handlebars": "^4.7.6",
+    "handlebars-dateformat": "^1.1.1",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.7",
+    "sequelize": "^6.3.5"
+  }
 }
