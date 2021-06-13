@@ -1,3 +1,14 @@
+window.onload = function () {
+  let currentpage = window.location.toString().split("/")[
+    window.location.toString().split("/").length - 1
+  ];
+  if (currentpage === "") {
+    currentpage = "hq";
+  }
+  const activeTab = document.querySelector(`#${currentpage}`).parentElement;
+  activeTab.classList.add("is-active");
+};
+
 const logout = async () => {
   const response = await fetch("/api/users/logout", {
     method: "POST",
@@ -11,12 +22,22 @@ const logout = async () => {
   }
 };
 
-document.querySelector("#logout").addEventListener("click", logout);
-document
-  .querySelector(".navbar-burger")
-  .addEventListener("click", toggleBurger);
-
 function toggleBurger(_event) {
   document.querySelector(".navbar-burger").classList.toggle("is-active");
   document.querySelector(".navbar-menu").classList.toggle("is-active");
 }
+
+function todo(_event) {
+  document.location.replace("/todo");
+}
+
+function hq(_event) {
+  document.location.replace("/");
+}
+
+document.querySelector("#hq").addEventListener("click", hq);
+document.querySelector("#todo").addEventListener("click", todo);
+document.querySelector("#logout").addEventListener("click", logout);
+document
+  .querySelector(".navbar-burger")
+  .addEventListener("click", toggleBurger);

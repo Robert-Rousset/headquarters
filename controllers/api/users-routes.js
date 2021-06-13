@@ -10,6 +10,7 @@ router.post("/", async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.userId = user.id;
       res.status(200).json(user);
     });
   } catch (err) {
@@ -19,7 +20,7 @@ router.post("/", async (req, res) => {
 });
 
 //Login
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({
       where: {
@@ -30,7 +31,7 @@ router.post('/login', async (req, res) => {
     if (!user) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
 
@@ -39,23 +40,21 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.userId = user.id;
 
-      res
-        .status(200)
-        .json({ user: user, message: 'You are now logged in!' });
+      res.status(200).json({ user: user, message: "You are now logged in!" });
     });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
 
 //Logout
 router.post("/logout", (req, res) => {
