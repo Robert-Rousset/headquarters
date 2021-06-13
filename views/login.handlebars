@@ -6,10 +6,6 @@
     <link rel="shortcut icon" type="image/jpg" href="/img/favicon.ico" />
     <link
       rel="stylesheet"
-      href="https://jenil.github.io/bulmaswatch/darkly/bulmaswatch.min.css"
-    />
-    <link
-      rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
@@ -36,7 +32,7 @@
           </button>
         </div>
         <div class="column has-text-centered">
-          <button class="button is-primary is-large">
+          <button class="button is-primary is-large" id="login">
             Login
           </button>
         </div>
@@ -53,19 +49,37 @@
           laborum.</p>
       </div>
     </section>
-    <div class="modal" id="signup-modal">
+    <div class="modal" id="login-modal">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Modal title</p>
+          <p class="modal-card-title">Login</p>
           <button class="delete" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
           <!-- Content ... -->
+          <div class="field">
+            <p class="control has-icons-left has-icons-right">
+              <input class="input" type="email" placeholder="Email" />
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" type="password" placeholder="Password" />
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+          </div>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success">Save changes</button>
-          <button class="button">Cancel</button>
+          <button class="button is-success">Confirm</button>
         </footer>
       </div>
     </div>

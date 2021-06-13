@@ -1,3 +1,5 @@
+@import "https://jenil.github.io/bulmaswatch/darkly/bulmaswatch.min.css";
+
 :root {
   --primary: rgb(60, 188, 195);
   --secondary: rgb(235, 166, 63);
@@ -25,6 +27,9 @@ h2 {
 #button-box {
   margin: auto;
   max-width: 50rem;
+}
+.modal-card-foot {
+  justify-content: center;
 }
 /* .navbar {
   display: flex;
