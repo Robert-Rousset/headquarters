@@ -12,3 +12,11 @@ const logout = async () => {
 };
 
 document.querySelector("#logout").addEventListener("click", logout);
+document
+  .querySelector(".navbar-burger")
+  .addEventListener("click", toggleBurger);
+
+function toggleBurger(_event) {
+  document.querySelector(".navbar-burger").classList.toggle("is-active");
+  document.querySelector(".navbar-menu").classList.toggle("is-active");
+}

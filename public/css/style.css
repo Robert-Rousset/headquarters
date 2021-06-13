@@ -31,3 +31,6 @@ h2 {
 .modal-card-foot {
   justify-content: center;
 }
+#nav-buttons {
+  justify-content: flex-end;
+}
