@@ -12,6 +12,29 @@ async function toggleSignupModal(event) {
   modal.classList.toggle("is-active");
 }
 
+
+const login = async (event) => {
+    event.preventDefault();
+  
+    const email = document.querySelector('#login-email').value.trim();
+    const password = document.querySelector('#login-password').value.trim();
+  
+    if (email && password) {
+      const response = await fetch('/api/users/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+  
+      if (response.ok) {
+        document.location.replace('/');
+      } else {
+        alert('Failed to log in.');
+      }
+    }
+  };
+
+
 async function signup(event) {
   event.preventDefault();
 
@@ -36,6 +59,8 @@ async function signup(event) {
     }
   }
 }
+
+document.querySelector("#login-confirm").addEventListener("click", login);
 
 document.querySelector("#signup-confirm").addEventListener("click", signup);
 
