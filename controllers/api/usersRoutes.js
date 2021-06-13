@@ -3,14 +3,14 @@ const { User } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
-    const dbUserData = await User.create({
+    const user = await User.create({
       email: req.body.email,
       password: req.body.password,
     });
 
     req.session.save(() => {
       req.session.loggedIn = true;
-      res.status(200).json(dbUserData);
+      res.status(200).json(user);
     });
   } catch (err) {
     console.log(err);
@@ -18,6 +18,46 @@ router.post("/", async (req, res) => {
   }
 });
 
+//Login
+router.post('/login', async (req, res) => {
+  try {
+    const user = await User.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+
+    if (!user) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password. Please try again!' });
+      return;
+    }
+
+    const validPassword = await user.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password. Please try again!' });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res
+        .status(200)
+        .json({ user: user, message: 'You are now logged in!' });
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
+//Logout
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
