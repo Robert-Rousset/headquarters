@@ -10,17 +10,21 @@
   scroll-behavior: smooth;
 }
 main {
-    padding: 1rem;
+  padding: 1rem;
 }
 section {
-    padding: 1rem;
+  padding: 1rem;
 }
-.box{
-    background-color: var(--light);
+.box {
+  background-color: var(--light);
 }
 
-h2{
-    font-size: 1.9rem;
+h2 {
+  font-size: 1.9rem;
+}
+#button-box {
+  margin: auto;
+  max-width: 50rem;
 }
 /* .navbar {
   display: flex;
