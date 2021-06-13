@@ -34,3 +34,20 @@ h2 {
 #nav-buttons {
   justify-content: flex-end;
 }
+
+#todos {
+  padding: 0.8rem;
+}
+
+#todos li {
+  margin-top: 1rem;
+}
+
+.item {
+  width: 100%;
+}
+
+.item-text {
+  width: 100%;
+  text-align: left;
+}

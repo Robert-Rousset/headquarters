@@ -42,9 +42,9 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons" id="nav-buttons">
-                <a class="button is-primary">
+                {{!-- <a class="button is-primary">
                   <strong>Settings</strong>
-                </a>
+                </a> --}}
                 <a class="button is-light" id="logout">Logout</a>
               </div>
             </div>
@@ -55,8 +55,8 @@
     <main>
       <div class="tabs is-boxed is-medium">
         <ul>
-          <li class="is-active">
-            <a>
+          <li>
+            <a id="hq">
               <span class="icon is-small"><i
                   class="fas fa-h-square"
                   aria-hidden="true"
@@ -65,7 +65,7 @@
             </a>
           </li>
           <li>
-            <a>
+            <a id="todo">
               <span class="icon is-small"><i
                   class="fas fa-list-ul"
                   aria-hidden="true"
@@ -74,7 +74,7 @@
             </a>
           </li>
           <li>
-            <a>
+            <a id="timer">
               <span class="icon is-small"><i
                   class="fas fa-hourglass-start"
                   aria-hidden="true"
@@ -83,7 +83,7 @@
             </a>
           </li>
           <li>
-            <a>
+            <a id="inspire">
               <span class="icon is-small"><i
                   class="far fa-lightbulb"
                   aria-hidden="true"

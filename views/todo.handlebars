@@ -1,0 +1,46 @@
+<article class="columns">
+  <section class="column">
+    <button class="button" id="new-list">
+      Create New
+    </button>
+    <ul id="todos">
+      {{#each todos as |todo|}}
+        <li>
+          <div class="item button is-link notification">
+            {{todo.title}}
+            <button class="delete" aria-label="close"></button>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </section>
+
+  <div class="modal" id="create-todo-modal">
+      <div class="modal-background" id="create-todo-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Create New To Do List</p>
+          <button class="delete" id="create-todo-delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Content ... -->
+          <div class="field">
+            <p class="control has-icons-left has-icons-right">
+              <input class="input" id="create-todo-title" type="text" placeholder="title" />
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+              </span>
+            </p>
+          </div>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="create-todo-confirm">Confirm</button>
+        </footer>
+      </div>
+    </div>
+</article>
+
+<script src="js/todo.js"></script>
