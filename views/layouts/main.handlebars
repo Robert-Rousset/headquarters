@@ -1,0 +1,100 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/jpg" href="/img/favicon.ico">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img
+              src="https://bulma.io/images/bulma-logo.png"
+              width="112"
+              height="28"
+            />
+          </a>
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-primary">
+                  <strong>Settings</strong>
+                </a>
+                <a class="button is-light">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="tabs is-boxed is-medium">
+        <ul>
+          <li class="is-active">
+            <a>
+              <span class="icon is-small"><i
+                  class="fas fa-h-square"
+                  aria-hidden="true"
+                ></i></span>
+              <span>HQ</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span class="icon is-small"><i
+                  class="fas fa-list-ul"
+                  aria-hidden="true"
+                ></i></span>
+              <span>To Do</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span class="icon is-small"><i
+                  class="fas fa-hourglass-start"
+                  aria-hidden="true"
+                ></i></span>
+              <span>Timer</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span class="icon is-small"><i
+                  class="far fa-lightbulb"
+                  aria-hidden="true"
+                ></i></span>
+              <span>Inspire</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      {{{body}}}
+    </main>
+
+    <footer></footer>
+  </body>
+</html>
