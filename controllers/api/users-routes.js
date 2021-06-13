@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Todo } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
@@ -67,4 +67,18 @@ router.post("/logout", (req, res) => {
   }
 });
 
+//Create todo
+router.post("/create-todo", async (req, res) => {
+  const user = await User.findByPk(req.session.userId);
+  const newTodo = await Todo.create({
+    title: req.body.title,
+    UserId: user.id
+  })
+  res.status(200).json(newTodo);
+});
+
+
+
+
 module.exports = router;
+
