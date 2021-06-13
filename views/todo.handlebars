@@ -1,9 +1,17 @@
 <article class="columns">
-    <section class="column">
-        <ul>
-            {{#each todos as |todo|}}
-                <li>{{todo.title}}</li>
-            {{/each}}
-        </ul>
-    </section>
+  <section class="column">
+    <button class="button">
+      Create New
+    </button>
+    <ul id="todos">
+      {{#each todos as |todo|}}
+        <li>
+          <div class="item button is-link notification">
+            {{todo.title}}
+            <button class="delete" aria-label="close"></button>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </section>
 </article>
