@@ -72,13 +72,10 @@ router.post("/create-todo", async (req, res) => {
   const user = await User.findByPk(req.session.userId);
   const newTodo = await Todo.create({
     title: req.body.title,
-    UserId: user.id
-  })
+    colour: req.body.selectedColour,
+  });
+  newTodo.setUser(user);
   res.status(200).json(newTodo);
 });
 
-
-
-
 module.exports = router;
-
