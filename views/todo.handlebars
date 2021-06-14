@@ -7,7 +7,12 @@
       {{#each todos as |todo|}}
         <li>
           <div class="item button {{todo.colour}} notification">
-            {{todo.title}}
+            <div
+              class="edit"
+              data-todo-id="{{todo.id}}"
+              data-todo-title="{{todo.title}}"
+            ><i class="fas fa-pen-square"></i></div>
+            <p>{{todo.title}}</p>
             <button class="delete" aria-label="close"></button>
           </div>
         </li>
@@ -15,16 +20,12 @@
     </ul>
   </section>
 
-  <div class="modal" id="create-todo-modal">
-    <div class="modal-background" id="create-todo-background"></div>
+  <div class="modal" id="todo-modal">
+    <div class="modal-background" id="todo-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Create New To Do List</p>
-        <button
-          class="delete"
-          id="create-todo-delete"
-          aria-label="close"
-        ></button>
+        <button class="delete" id="todo-delete" aria-label="close"></button>
       </header>
       <section class="modal-card-body">
         <!-- Content ... -->
@@ -32,7 +33,7 @@
           <p class="control has-icons-left has-icons-right">
             <input
               class="input"
-              id="create-todo-title"
+              id="todo-title"
               type="text"
               placeholder="title"
             />
@@ -59,6 +60,10 @@
         <button
           class="button is-success"
           id="create-todo-confirm"
+        >Confirm</button>
+        <button
+          class="button is-success"
+          id="update-todo-confirm"
         >Confirm</button>
       </footer>
     </div>

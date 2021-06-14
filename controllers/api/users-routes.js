@@ -78,4 +78,17 @@ router.post("/create-todo", async (req, res) => {
   res.status(200).json(newTodo);
 });
 
+//Update todo
+router.put("/update-todo/:id", async (req, res) => {
+  const newTodo = await Todo.update({
+    title: req.body.title,
+    colour: req.body.selectedColour
+  }, {
+    where: {
+      id: req.params.id,
+    },
+  });
+  res.status(200).json(newTodo);
+});
+
 module.exports = router;
