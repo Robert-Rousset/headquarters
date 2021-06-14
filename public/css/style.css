@@ -45,14 +45,18 @@ h2 {
 
 .item {
   width: 100%;
+  justify-content: flex-start;
 }
 
-.item-text {
-  width: 100%;
-  text-align: left;
+.colours {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .colour {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin-bottom: 0px !important;
+  padding: 0rem 1.5rem;
+  margin: 2px !important;
+}
+.selected {
+  border: white solid 2px !important;
 }

@@ -6,7 +6,7 @@
     <ul id="todos">
       {{#each todos as |todo|}}
         <li>
-          <div class="item button is-link notification">
+          <div class="item button {{todo.colour}} notification">
             {{todo.title}}
             <button class="delete" aria-label="close"></button>
           </div>
@@ -44,7 +44,7 @@
             </span>
           </p>
         </div>
-        <div class="field">
+        <div class="field colours">
           <div class="colour button is-link notification"></div>
           <div class="colour button is-primary notification"></div>
           <div class="colour button is-info notification"></div>
@@ -52,7 +52,6 @@
           <div class="colour button is-warning notification"></div>
           <div class="colour button is-danger notification"></div>
           <div class="colour button is-black notification"></div>
-          <div class="colour button is-light notification"></div>
           <div class="colour button notification"></div>
         </div>
       </section>

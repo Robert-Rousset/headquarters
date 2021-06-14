@@ -1,3 +1,5 @@
+let selectedColour;
+
 async function toggleCreateTodoModal(event) {
   event.preventDefault();
 
@@ -13,6 +15,7 @@ async function createList(event) {
     method: "POST",
     body: JSON.stringify({
       title,
+      selectedColour,
     }),
     headers: {
       "Content-Type": "application/json",
@@ -22,6 +25,24 @@ async function createList(event) {
     document.location.replace("/todo");
   }
 }
+
+const colours = Array.from(document.querySelectorAll(".colour"));
+colours.forEach((colour) => {
+  colour.addEventListener("click", function selectColour(event) {
+    event.preventDefault();
+
+    const coloursEls = Array.from(document.querySelectorAll(".colour"));
+    coloursEls.forEach((element) => {
+      element.classList.remove("selected");
+    });
+
+    this.classList.add("selected");
+
+    const classesArray = Array.from(this.classList);
+
+    selectedColour = classesArray.find((element) => element.startsWith("is-"));
+  });
+});
 
 document
   .querySelector("#create-todo-background")

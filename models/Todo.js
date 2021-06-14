@@ -18,6 +18,10 @@ Todo.init(
         len: [1, 20],
       },
     },
+    colour: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,
