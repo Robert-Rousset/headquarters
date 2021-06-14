@@ -60,3 +60,8 @@ h2 {
 .selected {
   border: white solid 2px !important;
 }
+
+.edit {
+  margin-right: 1rem;
+  font-size: 2rem;
+}
