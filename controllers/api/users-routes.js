@@ -69,26 +69,37 @@ router.post("/logout", (req, res) => {
 
 //Create todo
 router.post("/create-todo", async (req, res) => {
-  const user = await User.findByPk(req.session.userId);
-  const newTodo = await Todo.create({
-    title: req.body.title,
-    colour: req.body.selectedColour,
-  });
-  newTodo.setUser(user);
-  res.status(200).json(newTodo);
+  try {
+    const user = await User.findByPk(req.session.userId);
+    const newTodo = await Todo.create({
+      title: req.body.title,
+      colour: req.body.selectedColour,
+    });
+    await newTodo.setUser(user);
+    res.status(200).json(newTodo);
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 //Update todo
 router.put("/update-todo/:id", async (req, res) => {
-  const newTodo = await Todo.update({
-    title: req.body.title,
-    colour: req.body.selectedColour
-  }, {
-    where: {
-      id: req.params.id,
-    },
-  });
-  res.status(200).json(newTodo);
+  try {
+    const newTodo = await Todo.update(
+      {
+        title: req.body.title,
+        colour: req.body.selectedColour,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    res.status(200).json(newTodo);
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 module.exports = router;

@@ -7,9 +7,13 @@ router.get("/", withAuth, (req, res) => {
 });
 
 router.get("/todo", withAuth, async (req, res) => {
-  const user = await User.findByPk(req.session.userId);
-  const todos = (await user.getTodos()).map((todo) => todo.dataValues);
-  res.render("todo", { todos });
+  try {
+    const user = await User.findByPk(req.session.userId);
+    const todos = (await user.getTodos()).map((todo) => todo.dataValues);
+    res.render("todo", { todos });
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 module.exports = router;

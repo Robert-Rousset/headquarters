@@ -11,6 +11,7 @@
               class="edit"
               data-todo-id="{{todo.id}}"
               data-todo-title="{{todo.title}}"
+              data-todo-colour="{{todo.colour}}"
             ><i class="fas fa-pen-square"></i></div>
             <p>{{todo.title}}</p>
             <button class="delete" aria-label="close"></button>
@@ -24,25 +25,20 @@
     <div class="modal-background" id="todo-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Create New To Do List</p>
+        <p class="modal-card-title" id="create-heading">Create New To Do List</p>
+        <p class="modal-card-title" id="edit-heading">Edit To Do List</p>
         <button class="delete" id="todo-delete" aria-label="close"></button>
       </header>
       <section class="modal-card-body">
         <!-- Content ... -->
         <div class="field">
-          <p class="control has-icons-left has-icons-right">
+          <p class="control">
             <input
               class="input"
               id="todo-title"
               type="text"
-              placeholder="title"
+              placeholder="Title"
             />
-            <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
-            </span>
-            <span class="icon is-small is-right">
-              <i class="fas fa-check"></i>
-            </span>
           </p>
         </div>
         <div class="field colours">
@@ -53,7 +49,6 @@
           <div class="colour button is-warning notification"></div>
           <div class="colour button is-danger notification"></div>
           <div class="colour button is-black notification"></div>
-          <div class="colour button notification"></div>
         </div>
       </section>
       <footer class="modal-card-foot">
