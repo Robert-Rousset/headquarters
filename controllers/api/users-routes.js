@@ -75,7 +75,7 @@ router.post("/create-todo", async (req, res) => {
       title: req.body.title,
       colour: req.body.selectedColour,
     });
-    newTodo.setUser(user);
+    await newTodo.setUser(user);
     res.status(200).json(newTodo);
   } catch (err) {
     res.status(500).send(err);

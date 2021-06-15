@@ -7,14 +7,18 @@ function toggleTodoModal(event) {
   const clickedOnAnEdit = Array.from(event.currentTarget.classList).includes(
     "edit"
   );
+  document.querySelector("#update-todo-confirm").style.display = "none";
+  document.querySelector("#create-todo-confirm").style.display = "none";
+  document.querySelector("#edit-heading").style.display = "none";
+  document.querySelector("#create-heading").style.display = "none";
   if (clickedOnAnEdit) {
-    document.querySelector("#create-todo-confirm").style.display = "none";
     document.querySelector("#update-todo-confirm").style.display = "flex";
+    document.querySelector("#edit-heading").style.display = "flex";
     document.querySelector("#todo-title").value = this.dataset.todoTitle;
     selectedTodoId = this.dataset.todoId;
   } else {
     document.querySelector("#create-todo-confirm").style.display = "flex";
-    document.querySelector("#update-todo-confirm").style.display = "none";
+    document.querySelector("#create-heading").style.display = "flex";
     document.querySelector("#todo-title").value = "";
   }
 
