@@ -76,7 +76,8 @@ router.post("/create-todo", async (req, res) => {
       colour: req.body.selectedColour,
     });
     await newTodo.setUser(user);
-    res.status(200).json(newTodo);
+    const todos = (await user.getTodos()).map((todo) => todo.dataValues);
+    res.status(200).json(todos);
   } catch (err) {
     res.status(500).send(err);
   }
@@ -85,7 +86,8 @@ router.post("/create-todo", async (req, res) => {
 //Update todo
 router.put("/update-todo/:id", async (req, res) => {
   try {
-    const newTodo = await Todo.update(
+    const user = await User.findByPk(req.session.userId);
+    await Todo.update(
       {
         title: req.body.title,
         colour: req.body.selectedColour,
@@ -96,7 +98,8 @@ router.put("/update-todo/:id", async (req, res) => {
         },
       }
     );
-    res.status(200).json(newTodo);
+    const todos = (await user.getTodos()).map((todo) => todo.dataValues);
+    res.status(200).json(todos);
   } catch (err) {
     res.status(500).send(err);
   }
