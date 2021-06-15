@@ -16,7 +16,15 @@ function toggleTodoModal(event) {
     document.querySelector("#edit-heading").style.display = "flex";
     document.querySelector("#todo-title").value = this.dataset.todoTitle;
     selectedTodoId = this.dataset.todoId;
+    const bulmaColourClass = this.dataset.todoColour;
+    const colourElements = Array.from(document.querySelectorAll(".colour"));
+    const colourElementToSelect = colourElements.find((element) =>
+      Array.from(element.classList).includes(bulmaColourClass)
+    );
+    selectColourElement(colourElementToSelect);
   } else {
+    const colourElement = document.querySelector(".colours").children[0];
+    selectColourElement(colourElement);
     document.querySelector("#create-todo-confirm").style.display = "flex";
     document.querySelector("#create-heading").style.display = "flex";
     document.querySelector("#todo-title").value = "";
@@ -73,20 +81,22 @@ function setUpColors() {
   colours.forEach((colour) => {
     colour.addEventListener("click", function selectColour(event) {
       event.preventDefault();
-
-      const coloursEls = Array.from(document.querySelectorAll(".colour"));
-      coloursEls.forEach((element) => {
-        element.classList.remove("selected");
-      });
-
-      this.classList.add("selected");
-
-      const classesArray = Array.from(this.classList);
-
-      selectedColour = classesArray.find((element) =>
-        element.startsWith("is-")
-      );
+      selectColourElement(this);
     });
+  });
+}
+
+function selectColourElement(colourElement) {
+  deselectAllColours();
+  colourElement.classList.add("selected");
+  const classesArray = Array.from(colourElement.classList);
+  selectedColour = classesArray.find((element) => element.startsWith("is-"));
+}
+
+function deselectAllColours() {
+  const coloursEls = Array.from(document.querySelectorAll(".colour"));
+  coloursEls.forEach((element) => {
+    element.classList.remove("selected");
   });
 }
 
