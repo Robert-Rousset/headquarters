@@ -4,20 +4,7 @@
       Create New
     </button>
     <ul id="todos">
-      {{#each todos as |todo|}}
-        <li>
-          <div class="item button {{todo.colour}} notification">
-            <div
-              class="edit"
-              data-todo-id="{{todo.id}}"
-              data-todo-title="{{todo.title}}"
-              data-todo-colour="{{todo.colour}}"
-            ><i class="fas fa-pen-square"></i></div>
-            <p>{{todo.title}}</p>
-            <button class="delete" aria-label="close"></button>
-          </div>
-        </li>
-      {{/each}}
+
     </ul>
   </section>
 

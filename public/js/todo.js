@@ -30,11 +30,16 @@ function toggleTodoModal(event) {
     document.querySelector("#todo-title").value = "";
   }
 
+  forrealziestoggle();
+}
+
+function forrealziestoggle() {
   const modal = document.querySelector("#todo-modal");
   modal.classList.toggle("is-active");
 }
 
 async function createList(event) {
+  forrealziestoggle();
   try {
     event.preventDefault();
 
@@ -50,14 +55,42 @@ async function createList(event) {
       },
     });
     if (response.ok) {
-      document.location.replace("/todo");
+      const todos = await response.json();
+      refreshToDos(todos);
     }
   } catch (err) {
     console.log(err);
   }
 }
 
+function refreshToDos(todos) {
+  const todosEl = document.querySelector("#todos");
+  todosEl.innerHTML = "";
+  todos.forEach((todo) => {
+    const newListItem = document.createElement("li");
+    newListItem.innerHTML = generateToDo(todo);
+    todosEl.append(newListItem);
+  });
+  setUpEdits();
+}
+
+function generateToDo(todo) {
+  return `
+        <div class="item button ${todo.colour} notification">
+          <div
+            class="edit"
+            data-todo-id="${todo.id}"
+            data-todo-title="${todo.title}"
+            data-todo-colour="${todo.colour}"
+          ><i class="fas fa-pen-square"></i></div>
+          <p>${todo.title}</p>
+          <button class="delete" aria-label="close"></button>
+        </div>
+    `;
+}
+
 async function updateList(event) {
+  forrealziestoggle();
   event.preventDefault();
 
   const title = document.querySelector("#todo-title").value.trim();
@@ -72,7 +105,8 @@ async function updateList(event) {
     },
   });
   if (response.ok) {
-    document.location.replace("/todo");
+    const todos = await response.json();
+    refreshToDos(todos);
   }
 }
 
@@ -126,10 +160,15 @@ function setUpModal() {
     .addEventListener("click", updateList);
 }
 
-function init() {
+async function init() {
   setUpColors();
-  setUpEdits();
   setUpModal();
+  const response = await fetch("/api/todos/");
+  if (response.ok) {
+    const todos = await response.json();
+    refreshToDos(todos);
+  }
+  setUpEdits();
 }
 
 init();
