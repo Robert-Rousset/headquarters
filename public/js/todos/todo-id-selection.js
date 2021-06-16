@@ -1,11 +1,11 @@
 export default {
-  selectedTodoId: "",
+  __selectedTodoId: "",
 
   setSelectedTodoId(todoId) {
-    this.selectedTodoId = todoId;
+    this.__selectedTodoId = todoId;
   },
 
   getSelectedTodoId() {
-    return this.selectedTodoId;
+    return this.__selectedTodoId;
   },
 };

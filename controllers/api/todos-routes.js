@@ -13,13 +13,28 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 router.get("/:id", withAuth, async (req, res) => {
-  const user = await User.findByPk(req.session.userId);
   const todo = await Todo.findByPk(req.params.id);
+  const user = await User.findByPk(req.session.userId);
   if (todo.UserId !== user.id) {
     res.status(403).end();
     return;
   }
   res.status(200).json(todo);
+});
+
+router.get("/:id/items", withAuth, async (req, res) => {
+  try {
+    const todo = await Todo.findByPk(req.params.id);
+    const user = await User.findByPk(req.session.userId);
+    if (todo.UserId !== user.id) {
+      res.status(403).end();
+      return;
+    }
+    const items = (await todo.getItems()).map((item) => item.dataValues);
+    res.status(200).json(items);
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 module.exports = router;

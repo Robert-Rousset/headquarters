@@ -16,14 +16,4 @@ router.get("/todo", withAuth, async (req, res) => {
   }
 });
 
-router.get("/item", withAuth, async (req, res) => {
-  try {
-    const user = await User.findByPk(req.session.userId);
-    const items = (await user.getItems()).map((item) => item.dataValues);
-    res.render("todo", { todos: items });
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
-
 module.exports = router;

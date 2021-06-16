@@ -1,10 +1,10 @@
-export default async function (event) {
-    console.log("Got here")
-    try {
-        event.preventDefault();
+import todoIdSelection from "../todo-id-selection.js";
+import displayItems from "../items/display-items.js";
 
-        const newContent = document.querySelector("#item-content").value.trim();
-        const response = await fetch("/api/users/create-item", {
+export default async function (event) {
+    try {
+        const newContent = event.currentTarget.parentElement.querySelector(".item-input").value.trim();
+        const response = await fetch(`/api/todos/${todoIdSelection.getSelectedTodoId()}/items`, {
             method: "POST",
             body: JSON.stringify({
                 content: newContent,
