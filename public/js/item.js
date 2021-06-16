@@ -17,7 +17,7 @@ function generateAddNewItemItem(todo) {
     <div class="item button ${todo.colour} notification">
           <div
             class="edit"
-            ><i class="fas fa-pen-square"></i></div>
+            ><i class="far fa-save"></i></div>
             <div class="field">
           <p class="control">
             <input
