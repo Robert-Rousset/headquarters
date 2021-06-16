@@ -73,7 +73,7 @@ router.post("/create-todo", async (req, res) => {
     const user = await User.findByPk(req.session.userId);
     const newTodo = await Todo.create({
       title: req.body.title,
-      colour: req.body.selectedColour,
+      colour: req.body.colour,
     });
     await newTodo.setUser(user);
     const todos = (await user.getTodos()).map((todo) => todo.dataValues);
@@ -90,7 +90,7 @@ router.put("/update-todo/:id", async (req, res) => {
     await Todo.update(
       {
         title: req.body.title,
-        colour: req.body.selectedColour,
+        colour: req.body.colour,
       },
       {
         where: {
