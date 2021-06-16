@@ -26,7 +26,7 @@ export default function (event) {
     colourSelection.selectColourElement(colourElementToSelect);
   } else {
     const colourElement = document.querySelector(".colours").children[0];
-    selectColourElement(colourElement);
+    colourSelection.selectColourElement(colourElement);
     document.querySelector("#create-todo-confirm").style.display = "flex";
     document.querySelector("#create-heading").style.display = "flex";
     document.querySelector("#todo-title").value = "";

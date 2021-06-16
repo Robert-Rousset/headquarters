@@ -3,7 +3,7 @@ import createTodo from "./create-todo.js";
 import updateTodo from "./update-todo.js";
 import colourSelection from "./colour-selection.js";
 import toggleTodoModal from "./modal-magic.js";
-
+  
 function setUpColors() {
   const colours = Array.from(document.querySelectorAll(".colour"));
   colours.forEach((colour) => {

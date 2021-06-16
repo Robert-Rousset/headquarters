@@ -1,26 +1,25 @@
-import colourSelection from "./colour-selection.js";
-import displayTodos from "./display-todos.js";
-
 export default async function (event) {
+    console.log("Got here")
     try {
         event.preventDefault();
 
-        const newTitle = document.querySelector("#item-title").value.trim();
-        const response = await fetch("/api/users/create-todo", {
+        const newContent = document.querySelector("#item-content").value.trim();
+        const response = await fetch("/api/users/create-item", {
             method: "POST",
             body: JSON.stringify({
-                title: newTitle,
-                colour: selectedColour,
+                content: newContent,
             }),
             headers: {
                 "Content-Type": "application/json",
             },
         });
         if (response.ok) {
-            const todos = await response.json();
-            displayTodos(todos);
+            const items = await response.json();
+            displayItems(items);
         }
     } catch (err) {
         console.log(err);
     }
 }
+
+

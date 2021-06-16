@@ -17,13 +17,13 @@ function generateAddNewItemItem(todo) {
   addNewItemItem.innerHTML = `
     <div class="item button ${todo.colour} notification">
           <div
-            class="edit"
+            class="edit" id="save-item"
             ><i class="far fa-save"></i></div>
             <div class="field">
           <p class="control">
             <input
               class="input"
-              id="item-title"
+              id="item-content"
               type="text"
               placeholder="Add new item"
             />
@@ -34,3 +34,4 @@ function generateAddNewItemItem(todo) {
     `;
   return addNewItemItem;
 }
+
