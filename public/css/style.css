@@ -65,3 +65,11 @@ h2 {
   margin-right: 1rem;
   font-size: 2rem;
 }
+
+.item {
+  height: 3.5rem;
+}
+
+input {
+  margin-top: 6px;
+}
