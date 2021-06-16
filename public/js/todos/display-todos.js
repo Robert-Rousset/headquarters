@@ -24,7 +24,7 @@ function initEditTodoButtons() {
 
 function onTodoClick(event) {
   const todo = event.currentTarget;
-  const todoEdit = todo.querySelector(".edit");
+  const todoEdit = todo.querySelector(".edit-todo");
   const todoId = todoEdit.dataset.todoId;
   todoIdSelection.setSelectedTodoId(todoId);
   items(todoId);

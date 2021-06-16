@@ -105,19 +105,5 @@ router.put("/update-todo/:id", async (req, res) => {
   }
 });
 
-//Create item
-router.post("/create-item", async (req, res) => {
-  try {
-    const user = await User.findByPk(req.session.userId);
-    const newItem = await Item.create({
-      content: req.body.content
-    });
-    await newItem.setUser(user);
-    const items = (await user.getItems()).map((item) => item.dataValues);
-    res.status(200).json(items);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
 
 module.exports = router;

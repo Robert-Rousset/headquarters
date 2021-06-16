@@ -6,6 +6,5 @@ User.hasMany(Todo);
 Todo.belongsTo(User);
 Todo.hasMany(Item);
 Item.belongsTo(Todo);
-Item.belongsTo(User);
 
 module.exports = { User, Todo, Item };

@@ -1,14 +1,14 @@
-function generateItem(item, colourString) {
-    const addNewItemItem = document.createElement("li");
-    addNewItemItem.innerHTML = `
+export default function generateItem(item, colourString) {
+  const newItem = document.createElement("li");
+  newItem.innerHTML = `
     <div class="item button ${colourString} notification">
           <div
-            class="create-item-button" 
+            class="update-item-button is-hidden" 
             ><i class="far fa-save"></i></div>
             <div class="field">
           <p class="control">
             <input
-              class="input item-input"
+              class="input item-input is-hidden"
               type="text"
               placeholder="Add new item"
             />
@@ -18,5 +18,5 @@ function generateItem(item, colourString) {
           <button class="delete" aria-label="close"></button>
         </div>
     `;
-    return addNewItemItem;
+  return newItem;
 }
