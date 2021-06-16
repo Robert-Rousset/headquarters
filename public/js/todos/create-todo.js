@@ -1,29 +1,14 @@
+import toggleTodoModal from "./toggle-todo-modal.js";
 import colourSelection from "./colour-selection.js";
-import forrealziestoggle from "./toggle-todo-modal.js";
-import displayTodos from "./display-todos.js";
 
-export default async function (event) {
-  forrealziestoggle();
-  try {
-    event.preventDefault();
-
-    const newTitle = document.querySelector("#todo-title").value.trim();
-    const selectedColour = colourSelection.getSelectedColour();
-    const response = await fetch("/api/users/create-todo", {
-      method: "POST",
-      body: JSON.stringify({
-        title: newTitle,
-        colour: selectedColour,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (response.ok) {
-      const todos = await response.json();
-      displayTodos(todos);
-    }
-  } catch (err) {
-    console.log(err);
-  }
+export default function (event) {
+  event.stopPropagation();
+  document.querySelector("#update-todo-confirm").style.display = "none";
+  document.querySelector("#edit-heading").style.display = "none";
+  document.querySelector("#create-todo-confirm").style.display = "flex";
+  document.querySelector("#create-heading").style.display = "flex";
+  const colourSelectors = document.querySelector(".colours").children[0];
+  colourSelection.setSelectedColourSelector(colourSelectors);
+  document.querySelector("#todo-title").value = "";
+  toggleTodoModal();
 }

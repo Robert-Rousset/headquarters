@@ -1,6 +1,6 @@
 import generateTodo from "./generate-todo.js";
 import items from "./items/items.js";
-import toggleTodoModal from "./modal-magic.js";
+import editTodo from "./edit-todo.js";
 
 export default function (todos) {
   const todosEl = document.querySelector("#todos");
@@ -11,13 +11,13 @@ export default function (todos) {
     newTodo.addEventListener("click", onTodoClick);
     todosEl.append(newTodo);
   });
-  setUpEdits();
+  initEditTodoButtons();
 }
 
-function setUpEdits() {
+function initEditTodoButtons() {
   const edits = Array.from(document.querySelectorAll(".edit"));
   edits.forEach((edit) => {
-    edit.addEventListener("click", toggleTodoModal);
+    edit.addEventListener("click", editTodo);
   });
 }
 

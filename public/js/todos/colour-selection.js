@@ -9,10 +9,10 @@ export default {
     return this.selectedColour;
   },
 
-  selectColourElement(colourElement) {
-    deselectAllColours();
-    colourElement.classList.add("selected");
-    const classesArray = Array.from(colourElement.classList);
+  setSelectedColourSelector(colourSelector) {
+    deselectAllColourSelectors();
+    colourSelector.classList.add("selected");
+    const classesArray = Array.from(colourSelector.classList);
     const newBulmaColorClass = classesArray.find((element) =>
       element.startsWith("is-")
     );
@@ -20,9 +20,9 @@ export default {
   },
 };
 
-function deselectAllColours() {
-  const coloursEls = Array.from(document.querySelectorAll(".colour"));
-  coloursEls.forEach((element) => {
-    element.classList.remove("selected");
+function deselectAllColourSelectors() {
+  const colourSelectors = Array.from(document.querySelectorAll(".colour"));
+  colourSelectors.forEach((colourSelector) => {
+    colourSelector.classList.remove("selected");
   });
 }
