@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Todo } = require("../../models");
+const { User, Todo, Item } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
@@ -100,6 +100,21 @@ router.put("/update-todo/:id", async (req, res) => {
     );
     const todos = (await user.getTodos()).map((todo) => todo.dataValues);
     res.status(200).json(todos);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+//Create item
+router.post("/create-item", async (req, res) => {
+  try {
+    const user = await User.findByPk(req.session.userId);
+    const newItem = await Item.create({
+      content: req.body.content
+    });
+    await newItem.setUser(user);
+    const items = (await user.getItems()).map((item) => item.dataValues);
+    res.status(200).json(items);
   } catch (err) {
     res.status(500).send(err);
   }

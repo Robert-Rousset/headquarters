@@ -23,7 +23,7 @@ function generateAddNewItemItem(todo) {
           <p class="control">
             <input
               class="input"
-              id="todo-title"
+              id="item-title"
               type="text"
               placeholder="Add new item"
             />
