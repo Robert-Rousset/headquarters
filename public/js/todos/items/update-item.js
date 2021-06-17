@@ -1,7 +1,8 @@
+import itemIdSelection from "./item-id-selection.js";
 import todoIdSelection from "../todo-id-selection.js";
-import displayItems from "../items/display-items.js";
+import displayItems from "./display-items.js";
 
-export default async function (_event) {
+export default async function updateItem(_event) {
   try {
     const res = await fetch(
       `/api/todos/${todoIdSelection.getSelectedTodoId()}`
@@ -10,8 +11,9 @@ export default async function (_event) {
     const newContent = this.parentElement
       .querySelector(".item-input")
       .value.trim();
-    const response = await fetch(`/api/todos/${todo.id}/items`, {
-      method: "POST",
+    const itemId = itemIdSelection.getSelectedItemId();
+    const response = await fetch(`/api/items/update-item/${itemId}`, {
+      method: "PUT",
       body: JSON.stringify({
         content: newContent,
       }),
@@ -19,6 +21,7 @@ export default async function (_event) {
         "Content-Type": "application/json",
       },
     });
+    itemIdSelection.setSelectedItemId("");
     if (response.ok) {
       const items = await response.json();
       displayItems(items, todo);
