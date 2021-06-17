@@ -61,17 +61,20 @@ h2 {
   border: white solid 2px !important;
 }
 
-.edit-todo {
+.edit-todo,
+.edit-item-button,
+.create-item-button,
+.update-item-button {
   margin-right: 1rem;
   font-size: 2rem;
 }
 
 .item {
-  height: 3.5rem;
+  align-items: center;
 }
 
-input {
-  margin-top: 6px;
+.field {
+  margin: 0px !important;
 }
 
 .is-hidden {

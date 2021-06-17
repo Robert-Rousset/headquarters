@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Todo, Item } = require("../../models");
+const { User, Todo } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
@@ -104,6 +104,5 @@ router.put("/update-todo/:id", async (req, res) => {
     res.status(500).send(err);
   }
 });
-
 
 module.exports = router;

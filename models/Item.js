@@ -14,9 +14,6 @@ Item.init(
     content: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1, 20],
-      },
     },
   },
   {
