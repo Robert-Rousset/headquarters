@@ -5,6 +5,7 @@ import createItem from "./create-item.js";
 import editItem from "./edit-item.js";
 import updateItem from "./update-item.js";
 import deleteItem from "./delete-item.js";
+import itemIdSelection from "./item-id-selection.js";
 
 export default function (items, todo) {
   const listEl = document.querySelector("#todos");
@@ -22,6 +23,7 @@ export default function (items, todo) {
     .addEventListener("click", createItem);
   initEditItemButtons();
   initDeleteItemButtons();
+  itemIdSelection.setSelectedItemId(null);
 }
 
 function createTodoTitle(todo) {
@@ -76,9 +78,7 @@ function initEditItemButtons() {
 }
 
 function initDeleteItemButtons() {
-  const deleteItemButtons = Array.from(
-    document.querySelectorAll(".delete")
-  );
+  const deleteItemButtons = Array.from(document.querySelectorAll(".delete"));
   deleteItemButtons.forEach((deleteItemButton) => {
     deleteItemButton.addEventListener("click", deleteItem);
   });
