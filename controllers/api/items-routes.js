@@ -12,7 +12,7 @@ router.put("/update-item/:id", async (req, res) => {
     }
     item.content = req.body.content;
     await item.save();
-    const items = (await todo.getItems()).map((item) => item.dataValues);
+    const items = (await todo.getItems()).map(item => item.dataValues);
     res.status(200).json(items);
   } catch (err) {
     res.status(500).send(err);
@@ -33,11 +33,11 @@ router.delete("/delete-item/:id", async (req, res) => {
       return;
     }
     await item.destroy();
-    const items = (await todo.getItems()).map((item) => item.dataValues);
+    const items = (await todo.getItems()).map(item => item.dataValues);
     res.status(200).json(items);
   } catch (err) {
     res.status(500).send(err);
   }
-})
+});
 
 module.exports = router;

@@ -5,7 +5,7 @@ const { User, Todo, Item } = require("../../models");
 router.get("/", withAuth, async (req, res) => {
   try {
     const user = await User.findByPk(req.session.userId);
-    const todos = (await user.getTodos()).map((todo) => todo.dataValues);
+    const todos = (await user.getTodos()).map(todo => todo.dataValues);
     res.status(200).json(todos);
   } catch (err) {
     res.status(500).send(err);
@@ -30,7 +30,7 @@ router.get("/:id/items", withAuth, async (req, res) => {
       res.status(403).end();
       return;
     }
-    const items = (await todo.getItems()).map((item) => item.dataValues);
+    const items = (await todo.getItems()).map(item => item.dataValues);
     res.status(200).json(items);
   } catch (err) {
     res.status(500).send(err);
@@ -38,16 +38,16 @@ router.get("/:id/items", withAuth, async (req, res) => {
 });
 
 //Create item
-router.post("/:id/items", async (req, res) => {
+router.post("/:id", async (req, res) => {
   try {
     const todo = await Todo.findByPk(req.params.id);
     const user = await User.findByPk(req.session.userId);
     const newItem = await Item.create({
-      content: req.body.content
+      content: req.body.content,
     });
     await newItem.setTodo(todo);
-    console.log("newitem", newItem)
-    const items = (await todo.getItems()).map((item) => item.dataValues);
+    console.log("newitem", newItem);
+    const items = (await todo.getItems()).map(item => item.dataValues);
     res.status(200).json(items);
   } catch (err) {
     res.status(500).send(err);
@@ -68,12 +68,11 @@ router.delete("/delete-todo/:id", async (req, res) => {
       return;
     }
     await todo.destroy();
-    const todos = (await user.getTodos()).map((todo) => todo.dataValues);
+    const todos = (await user.getTodos()).map(todo => todo.dataValues);
     res.status(200).json(todos);
   } catch (err) {
     res.status(500).send(err);
   }
 });
-
 
 module.exports = router;

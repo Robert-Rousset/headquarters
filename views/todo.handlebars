@@ -1,12 +1,12 @@
 <article class="columns">
   <section class="column">
-    <button class="button" id="new-list">
-      Create New
+    <button class="button" id="add-todo-button">
+      Add New To Do List
     </button>
     <button class="button is-hidden" id="back-button">
       Back
     </button>
-    <ul id="todos">
+    <ul id="main-list">
 
     </ul>
   </section>
@@ -15,7 +15,7 @@
     <div class="modal-background" id="todo-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title" id="create-heading">Create New To Do List</p>
+        <p class="modal-card-title" id="add-heading">Add New To Do List</p>
         <p class="modal-card-title" id="edit-heading">Edit To Do List</p>
         <button class="delete" id="todo-delete" aria-label="close"></button>
       </header>
@@ -42,13 +42,10 @@
         </div>
       </section>
       <footer class="modal-card-foot">
+        <button class="button is-success" id="add-todo-confirm">Confirm</button>
         <button
           class="button is-success"
-          id="create-todo-confirm"
-        >Confirm</button>
-        <button
-          class="button is-success"
-          id="update-todo-confirm"
+          id="edit-todo-confirm"
         >Confirm</button>
       </footer>
     </div>
