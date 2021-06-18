@@ -1,12 +1,12 @@
 export default {
-  selectedColour: "",
+  __selectedColour: null,
 
   setSelectedColour(bulmaColourClass) {
-    this.selectedColour = bulmaColourClass;
+    this.__selectedColour = bulmaColourClass;
   },
 
   getSelectedColour() {
-    return this.selectedColour;
+    return this.__selectedColour;
   },
 
   setSelectedColourSelector(colourSelector) {

@@ -11,18 +11,18 @@ export default async function (todoId) {
 }
 
 function init() {
-  const createTodoButton = document.querySelector("#new-list")
-  createTodoButton.classList.toggle("is-hidden")
-  const backButton = document.querySelector("#back-button")
-  backButton.classList.toggle("is-hidden")
-  backButton.addEventListener('click', backToTodos)
+  const createTodoButton = document.querySelector("#new-list");
+  createTodoButton.classList.toggle("is-hidden");
+  const backButton = document.querySelector("#back-button");
+  backButton.classList.toggle("is-hidden");
+  backButton.addEventListener("click", backToTodos);
 }
 
 function backToTodos(_event) {
-  const createTodoButton = document.querySelector("#new-list")
-  createTodoButton.classList.toggle("is-hidden")
-  const backButton = document.querySelector("#back-button")
-  backButton.classList.toggle("is-hidden")
-  itemIdSelection.setSelectedItemId("");
+  const createTodoButton = document.querySelector("#new-list");
+  createTodoButton.classList.toggle("is-hidden");
+  const backButton = document.querySelector("#back-button");
+  backButton.classList.toggle("is-hidden");
+  itemIdSelection.setSelectedItemId(null);
   getAndShowTodos();
 }

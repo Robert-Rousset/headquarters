@@ -8,8 +8,7 @@ import toggleTodoModal from "./toggle-todo-modal.js";
 function initColourSelectors() {
   const colourSelectors = Array.from(document.querySelectorAll(".colour"));
   colourSelectors.forEach((colourSelector) => {
-    colourSelector.addEventListener("click", function (event) {
-      event.preventDefault();
+    colourSelector.addEventListener("click", function (_event) {
       colourSelection.setSelectedColourSelector(this);
     });
   });
@@ -63,6 +62,3 @@ async function init() {
 }
 
 init();
-
-
-
