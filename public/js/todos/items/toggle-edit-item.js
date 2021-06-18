@@ -1,4 +1,7 @@
 export default function toggleEditItem(itemId) {
+  if (!itemId) {
+    return;
+  }
   const editItemButtons = Array.from(
     document.querySelectorAll(".edit-item-button")
   );
