@@ -1,4 +1,5 @@
 import todoIdSelection from "../todo-id-selection.js";
+import displayItems from "./display-items.js";
 
 export default async function (_event) {
     const item = this.closest(".item");
@@ -17,7 +18,6 @@ export default async function (_event) {
             const items = await response.json();
             displayItems(items, todo);
         }
-        res.status(200).json(items);
     } catch (err) {
         console.log(err);
     }

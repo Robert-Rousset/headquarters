@@ -47,10 +47,7 @@ function confirmUpdateTodo(_event) {
   sendTodo(`/api/users/update-todo/${selectedTodoId}`, "PUT", selectedColour);
 }
 
-async function init() {
-  initCreateNewTodoButton();
-  initColourSelectors();
-  initTodoModal();
+export default async function getAndShowTodos() {
   const response = await fetch("/api/todos/");
   if (response.ok) {
     const todos = await response.json();
@@ -58,4 +55,14 @@ async function init() {
   }
 }
 
+async function init() {
+  initCreateNewTodoButton();
+  initColourSelectors();
+  initTodoModal();
+  await getAndShowTodos();
+}
+
 init();
+
+
+
