@@ -6,8 +6,10 @@ import editItem from "./edit-item.js";
 import updateItem from "./update-item.js";
 import deleteItem from "./delete-item.js";
 import itemIdSelection from "./item-id-selection.js";
+import showBackButton from "./show-back-button.js";
 
 export default function (items, todo) {
+  showBackButton();
   const listEl = document.querySelector("#todos");
   listEl.innerHTML = "";
   const todoEl = createTodoTitle(todo);

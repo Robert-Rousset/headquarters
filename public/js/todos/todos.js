@@ -4,6 +4,8 @@ import colourSelection from "./colour-selection.js";
 import todoIdSelection from "./todo-id-selection.js";
 import createTodo from "./create-todo.js";
 import toggleTodoModal from "./toggle-todo-modal.js";
+import showCreateTodoButton from "./show-create-todo-button.js";
+import itemIdSelection from "./items/item-id-selection.js";
 
 function initColourSelectors() {
   const colourSelectors = Array.from(document.querySelectorAll(".colour"));
@@ -33,6 +35,16 @@ function initCreateNewTodoButton() {
   document.querySelector("#new-list").addEventListener("click", createTodo);
 }
 
+function initBackButton() {
+  document.querySelector("#back-button").addEventListener("click", backToTodos);
+
+  function backToTodos(_event) {
+    showCreateTodoButton();
+    itemIdSelection.setSelectedItemId(null);
+    getAndShowTodos();
+  }
+}
+
 function confirmCreateTodo(_event) {
   const selectedColour = colourSelection.getSelectedColour();
   toggleTodoModal();
@@ -56,6 +68,7 @@ export default async function getAndShowTodos() {
 
 async function init() {
   initCreateNewTodoButton();
+  initBackButton();
   initColourSelectors();
   initTodoModal();
   await getAndShowTodos();
