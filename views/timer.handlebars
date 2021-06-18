@@ -1,0 +1,36 @@
+<article>
+  <section class="column">
+    <button class="button" id="timer-settings-button">
+      Timer Settings
+    </button>
+  </section>
+
+  <div class="modal" id="timer-settings-modal">
+    <div class="modal-background" id="timer-settings-modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Timer Settings</p>
+        <button
+          class="delete"
+          id="timer-settings-modal-delete"
+          aria-label="close"
+        ></button>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ... -->
+        <div class="select">
+          <select>
+            <option value="" disabled selected>Select your category</option>
+            <option>5 minutes</option>
+          </select>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button
+          class="button is-success"
+          id="timer-settings-confirm-button"
+        >Confirm</button>
+      </footer>
+    </div>
+  </div>
+</article>
