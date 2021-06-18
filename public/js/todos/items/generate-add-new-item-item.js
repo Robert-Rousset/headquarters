@@ -1,4 +1,4 @@
-export default function generateAddNewItemItem(todo) {
+export default function (todo) {
   const addNewItemItem = document.createElement("li");
   addNewItemItem.innerHTML = `
 <div class="item button ${todo.colour} notification">

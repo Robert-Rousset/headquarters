@@ -1,9 +1,10 @@
 import generateItem from "./generate-item.js";
 import generateTodo from "../generate-todo.js";
-import generateAddNewItemItem from "./generateAddNewItemItem.js";
+import generateAddNewItemItem from "./generate-add-new-item-item.js";
 import createItem from "./create-item.js";
 import editItem from "./edit-item.js";
 import updateItem from "./update-item.js";
+import deleteItem from "./delete-item.js";
 
 export default function (items, todo) {
   const listEl = document.querySelector("#todos");
@@ -20,6 +21,7 @@ export default function (items, todo) {
     .querySelector(".create-item-button")
     .addEventListener("click", createItem);
   initEditItemButtons();
+  initDeleteItemButtons();
 }
 
 function createTodoTitle(todo) {
@@ -70,5 +72,14 @@ function initEditItemButtons() {
   );
   updateItemButtons.forEach((updateItemButton) => {
     updateItemButton.addEventListener("click", updateItem);
+  });
+}
+
+function initDeleteItemButtons() {
+  const deleteItemButtons = Array.from(
+    document.querySelectorAll(".delete")
+  );
+  deleteItemButtons.forEach((deleteItemButton) => {
+    deleteItemButton.addEventListener("click", deleteItem);
   });
 }
