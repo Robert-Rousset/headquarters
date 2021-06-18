@@ -4,6 +4,8 @@ import colourSelection from "./colour-selection.js";
 import todoIdSelection from "./todo-id-selection.js";
 import createTodo from "./create-todo.js";
 import toggleTodoModal from "./toggle-todo-modal.js";
+import showCreateTodoButton from "./show-create-todo-button.js";
+import itemIdSelection from "./items/item-id-selection.js";
 
 function initColourSelectors() {
   const colourSelectors = Array.from(document.querySelectorAll(".colour"));
