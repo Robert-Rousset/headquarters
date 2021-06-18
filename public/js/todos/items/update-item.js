@@ -10,6 +10,7 @@ export default async function updateItem(_event) {
       .value.trim();
     const itemId = itemIdSelection.getSelectedItemId();
     toggleEditItem(itemId);
+    itemIdSelection.setSelectedItemId(null);
     const res = await fetch(
       `/api/todos/${todoIdSelection.getSelectedTodoId()}`
     );
@@ -23,7 +24,6 @@ export default async function updateItem(_event) {
         "Content-Type": "application/json",
       },
     });
-    itemIdSelection.setSelectedItemId(null);
     if (response.ok) {
       const items = await response.json();
       displayItems(items, todo);
