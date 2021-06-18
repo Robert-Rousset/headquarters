@@ -1,5 +1,5 @@
 export default {
-  __selectedItemId: "",
+  __selectedItemId: null,
 
   setSelectedItemId(itemId) {
     this.__selectedItemId = itemId;

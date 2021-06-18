@@ -1,5 +1,5 @@
 export default {
-  __selectedTodoId: "",
+  __selectedTodoId: null,
 
   setSelectedTodoId(todoId) {
     this.__selectedTodoId = todoId;
