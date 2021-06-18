@@ -3,8 +3,6 @@ import Stopwatch from "./Stopwatch.js";
 function init() {
     initTimerSettingsButton();
     initTimerSettingsConfirmButton();
-    const stopwatch = new Stopwatch(3);
-    stopwatch.start();
 }
 
 function initTimerSettingsButton() {
@@ -31,6 +29,10 @@ function confirmTimerSettings() {
     const arrayOfStrings = selectedTimeString.split(" ")
     const amount = Number(arrayOfStrings[0])
     const units = arrayOfStrings[1]
+    if (units === "second" || units === "seconds") {
+        const stopwatch = new Stopwatch(amount);
+        stopwatch.start();
+    }
 }
 
 init();

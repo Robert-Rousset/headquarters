@@ -80,3 +80,19 @@ h2 {
 .is-hidden {
   display: none;
 }
+
+#time-title-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  margin: -1rem 0 0 -1rem;
+}
+
+#timer-container {
+  position: relative;
+  padding: 1rem;
+}

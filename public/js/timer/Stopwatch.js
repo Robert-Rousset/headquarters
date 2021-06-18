@@ -1,7 +1,6 @@
 export default class {
     constructor(startSeconds) {
         this.seconds = startSeconds;
-        console.log(this.seconds);
     }
     start() {
         if (this.seconds <= 0) {
