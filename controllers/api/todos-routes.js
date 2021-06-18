@@ -24,7 +24,6 @@ router.get("/:id", withAuth, async (req, res) => {
 
 router.get("/:id/items", withAuth, async (req, res) => {
   try {
-    console.log(req.params.id)
     const todo = await Todo.findByPk(req.params.id);
     const user = await User.findByPk(req.session.userId);
     if (todo.UserId !== user.id) {
@@ -55,6 +54,26 @@ router.post("/:id/items", async (req, res) => {
   }
 });
 
+//Delete Todo
+router.delete("/delete-todo/:id", async (req, res) => {
+  try {
+    const todo = await Todo.findByPk(req.params.id);
+    if (!todo) {
+      res.status(404).end();
+      return;
+    }
+    const user = await User.findByPk(req.session.userId);
+    if (todo.UserId !== user.id) {
+      res.status(403).end();
+      return;
+    }
+    await todo.destroy();
+    const todos = (await user.getTodos()).map((todo) => todo.dataValues);
+    res.status(200).json(todos);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
 
 
 module.exports = router;
