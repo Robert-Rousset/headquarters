@@ -116,5 +116,30 @@ h2 {
 }
 
 #source-title {
-  padding: 1 rem;
+  padding: 1rem;
+}
+
+.card {
+  margin: auto;
+  width: 80%;
+}
+
+.card h2 {
+  padding: 1rem;
+}
+
+.video-card {
+  width: fit-content;
+  margin-bottom: 1rem;
+}
+
+.video-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+iframe {
+  padding: 1rem;
 }
