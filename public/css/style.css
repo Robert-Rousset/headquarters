@@ -71,6 +71,7 @@ h2 {
 
 .item {
   align-items: center;
+  transition: all, ease-in-out, 1s;
 }
 
 .field {
@@ -142,4 +143,19 @@ h2 {
 
 iframe {
   padding: 1rem;
+}
+
+#timer-button-box {
+  padding-top: 0px !important;
+  padding-left: 0px !important;
+}
+
+#login, #signup {
+  width: 10rem;
+}
+
+footer {
+  position: sticky;
+  height: 100px;
+  top: calc( 100vh - 100px );
 }
