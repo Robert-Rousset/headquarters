@@ -1,8 +1,10 @@
 import Stopwatch from "./Stopwatch.js";
+import timerModal from "./timer-modal.js";
 
 function init() {
     initTimerSettingsButton();
     initTimerSettingsConfirmButton();
+    timerModal.init();
 }
 
 function initTimerSettingsButton() {
