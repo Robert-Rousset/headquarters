@@ -30,6 +30,7 @@ function confirmTimerSettings() {
     const selectedTimeString = document.querySelector("select").value;
     const arrayOfStrings = selectedTimeString.split(" ")
     const amount = Number(arrayOfStrings[0])
+    document.getElementById("time-title").innerHTML = amount;
     const units = arrayOfStrings[1]
     if (units === "second" || units === "seconds") {
         const stopwatch = new Stopwatch(amount);

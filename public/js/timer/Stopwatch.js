@@ -9,8 +9,10 @@ export default class {
         this.intervalId = setInterval(this.tick, 1000, this);
     }
     tick(timer) {
-        timer.seconds -= 1;
-        if (timer.seconds <= 0) {
+        if (timer.seconds > 0) {
+            timer.seconds -= 1;
+            document.getElementById("time-title").innerHTML = timer.seconds;
+        } else {
             timer.complete();
         }
     }
