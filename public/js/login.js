@@ -14,7 +14,6 @@ async function toggleSignupModal(event) {
 
 
 const login = async (event) => {
-    event.preventDefault();
   
     const email = document.querySelector('#login-email').value.trim();
     const password = document.querySelector('#login-password').value.trim();
@@ -36,7 +35,6 @@ const login = async (event) => {
 
 
 async function signup(event) {
-  event.preventDefault();
 
   const email = document.querySelector("#signup-email").value.trim();
   const password = document.querySelector("#signup-password").value.trim();
@@ -60,9 +58,25 @@ async function signup(event) {
   }
 }
 
-document.querySelector("#login-confirm").addEventListener("click", login);
+function isItLoginEnter(event){
+  if(event.keyCode == 13){
+  login()
+  }
+}
+
+function isItSignupEnter(event){
+  if(event.keyCode == 13){
+  signup()
+  }
+}
+
+document.querySelector("#login-confirm").addEventListener("click", login)
+
+document.querySelector("#login-password").addEventListener("keyup", isItLoginEnter);
 
 document.querySelector("#signup-confirm").addEventListener("click", signup);
+
+document.querySelector("#signup-password").addEventListener("keyup", isItSignupEnter)
 
 document.querySelector("#signup").addEventListener("click", toggleSignupModal);
 document
@@ -79,3 +93,5 @@ document
 document
   .querySelector("#login-delete")
   .addEventListener("click", toggleLoginModal);
+
+
