@@ -39,9 +39,14 @@ function timer(_event) {
   document.location.replace("/timer");
 }
 
+function inspire(_event) {
+  document.location.replace("/inspire");
+}
+
 document.querySelector("#hq").addEventListener("click", hq);
 document.querySelector("#todo").addEventListener("click", todo);
 document.querySelector("#timer").addEventListener("click", timer);
+document.querySelector("#inspire").addEventListener("click", inspire);
 document.querySelector("#logout").addEventListener("click", logout);
 document
   .querySelector(".navbar-burger")
