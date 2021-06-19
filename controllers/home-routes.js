@@ -20,4 +20,8 @@ router.get("/timer", withAuth, async (req, res) => {
   res.render("timer");
 })
 
+router.get("/inspire", withAuth, async (req, res) => {
+  res.render("inspire");
+})
+
 module.exports = router;
