@@ -1,6 +1,6 @@
-
-
-export default async function updateQuote() {
+export default async function generateQuote() {
+    const quote = document.querySelector("blockquote p");
+    const cite = document.querySelector("blockquote cite");
     const response = await fetch("https://api.quotable.io/random");
     const data = await response.json();
     if (response.ok) {
@@ -8,9 +8,5 @@ export default async function updateQuote() {
         cite.textContent = data.author;
     } else {
         quote.textContent = "An error occured";
-        console.log(data);
     }
-    button.addEventListener("click", updateQuote);
-
-    updateQuote();
-};
+}

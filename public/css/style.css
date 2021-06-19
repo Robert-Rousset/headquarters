@@ -96,3 +96,25 @@ h2 {
   position: relative;
   padding: 1rem;
 }
+
+#card-quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #375a7f;
+  padding-bottom: 0.5rem;
+}
+
+#quote-card-body {
+  padding: 40px;
+}
+
+#quote-content {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+#source-title {
+  padding: 1 rem;
+}
