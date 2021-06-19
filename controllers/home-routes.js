@@ -16,4 +16,8 @@ router.get("/todo", withAuth, async (req, res) => {
   }
 });
 
+router.get("/timer", withAuth, async (req, res) => {
+  res.render("timer");
+})
+
 module.exports = router;

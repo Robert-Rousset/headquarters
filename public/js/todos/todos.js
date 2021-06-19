@@ -1,77 +1,39 @@
-import displayTodos from "./display-todos.js";
-import sendTodo from "./send-todo.js";
-import colourSelection from "./colour-selection.js";
-import todoIdSelection from "./todo-id-selection.js";
-import createTodo from "./create-todo.js";
-import toggleTodoModal from "./toggle-todo-modal.js";
-import showCreateTodoButton from "./show-create-todo-button.js";
-import itemIdSelection from "./items/item-id-selection.js";
+import todoModal from "./todo-modal.js";
+import generateTodoElement from "./generate-todo-element.js";
 
-function initColourSelectors() {
-  const colourSelectors = Array.from(document.querySelectorAll(".colour"));
-  colourSelectors.forEach((colourSelector) => {
-    colourSelector.addEventListener("click", function (_event) {
-      colourSelection.setSelectedColourSelector(this);
-    });
+export async function displayTodos(todos) {
+  if (!todos) {
+    const response = await fetch("/api/todos/");
+    todos = await response.json();
+  }
+  document.querySelector("#add-todo-button").classList.remove("is-hidden");
+  document.querySelector("#back-button").classList.add("is-hidden");
+  const mainList = document.querySelector("#main-list");
+  mainList.innerHTML = "";
+  todos.forEach(todo => {
+    mainList.append(generateTodoElement(todo));
   });
 }
 
-function initTodoModal() {
-  document
-    .querySelector("#todo-background")
-    .addEventListener("click", toggleTodoModal);
-  document
-    .querySelector("#todo-delete")
-    .addEventListener("click", toggleTodoModal);
-  document
-    .querySelector("#create-todo-confirm")
-    .addEventListener("click", confirmCreateTodo);
-  document
-    .querySelector("#update-todo-confirm")
-    .addEventListener("click", confirmUpdateTodo);
+async function back(_event) {
+  document.querySelector("#add-todo-button").classList.remove("is-hidden");
+  document.querySelector("#back-button").classList.add("is-hidden");
+  globalThis.selectedItemId = null;
+  displayTodos();
 }
 
-function initCreateNewTodoButton() {
-  document.querySelector("#new-list").addEventListener("click", createTodo);
+function addTodo(_event) {
+  const firstColourElement = document.querySelector(".colours").children[0];
+  todoModal.selectColour(firstColourElement);
+  document.querySelector("#todo-title").value = "";
+  todoModal.show("add");
 }
 
-function initBackButton() {
-  document.querySelector("#back-button").addEventListener("click", backToTodos);
-
-  function backToTodos(_event) {
-    showCreateTodoButton();
-    itemIdSelection.setSelectedItemId(null);
-    getAndShowTodos();
-  }
-}
-
-function confirmCreateTodo(_event) {
-  const selectedColour = colourSelection.getSelectedColour();
-  toggleTodoModal();
-  sendTodo("/api/users/create-todo", "POST", selectedColour);
-}
-
-function confirmUpdateTodo(_event) {
-  const selectedTodoId = todoIdSelection.getSelectedTodoId();
-  const selectedColour = colourSelection.getSelectedColour();
-  toggleTodoModal();
-  sendTodo(`/api/users/update-todo/${selectedTodoId}`, "PUT", selectedColour);
-}
-
-export default async function getAndShowTodos() {
-  const response = await fetch("/api/todos/");
-  if (response.ok) {
-    const todos = await response.json();
-    displayTodos(todos);
-  }
-}
-
-async function init() {
-  initCreateNewTodoButton();
-  initBackButton();
-  initColourSelectors();
-  initTodoModal();
-  await getAndShowTodos();
+function init() {
+  document.querySelector("#add-todo-button").onclick = addTodo;
+  document.querySelector("#back-button").onclick = back;
+  todoModal.init();
+  displayTodos();
 }
 
 init();

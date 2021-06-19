@@ -35,8 +35,13 @@ function hq(_event) {
   document.location.replace("/");
 }
 
+function timer(_event) {
+  document.location.replace("/timer");
+}
+
 document.querySelector("#hq").addEventListener("click", hq);
 document.querySelector("#todo").addEventListener("click", todo);
+document.querySelector("#timer").addEventListener("click", timer);
 document.querySelector("#logout").addEventListener("click", logout);
 document
   .querySelector(".navbar-burger")
