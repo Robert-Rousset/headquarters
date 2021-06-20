@@ -4,23 +4,40 @@ export default class {
     }
     start() {
         if (this.seconds <= 0) {
+            const alerted = JSON.parse(localStorage.getItem("alerted"))
+            if(!alerted){
+            this.complete();
             return;
+            }
+            return;
+        }
+        localStorage.setItem("alerted", JSON.stringify(false))
+        if (this.intervalId){
+            clearInterval(this.intervalId)
         }
         this.intervalId = setInterval(this.tick, 1000, this);
     }
     tick(timer) {
         if (timer.seconds > 0) {
             timer.seconds -= 1;
-            document.getElementById("time-title").innerHTML = timer.seconds;
+            const counter = document.querySelector("#time-title")
+            if(!counter) return
+            counter.innerHTML = timer.seconds;
         } else {
             timer.complete();
         }
     }
+    update(newSeconds){
+        this.seconds = newSeconds
+    }
     pause() {
-        clearInterval(this.intervalId);
+        if (this.intervalId){
+            clearInterval(this.intervalId)
+        }
     }
     complete() {
         clearInterval(this.intervalId);
         alert("Your time is up!");
+        localStorage.setItem("alerted", JSON.stringify(true))
     }
 }

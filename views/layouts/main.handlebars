@@ -11,7 +11,11 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/main.js" defer></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+    ></script>
+    <script type="module" src="js/main.js" defer></script>
     <title>Headquarters</title>
   </head>
 
@@ -91,7 +95,16 @@
       </div>
       {{{body}}}
     </main>
-
-    <footer></footer>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Headquarters</strong>
+          by
+          <a>Study Buddies</a>. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        </p>
+      </div>
+    </footer>
   </body>
+
 </html>

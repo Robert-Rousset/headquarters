@@ -1,3 +1,5 @@
+import Stopwatch from "./timer/stopwatch.js"
+
 window.onload = function () {
   let currentpage = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
@@ -51,3 +53,24 @@ document.querySelector("#logout").addEventListener("click", logout);
 document
   .querySelector(".navbar-burger")
   .addEventListener("click", toggleBurger);
+
+
+async function getTimer(){
+  const response = await fetch("/api/timer/");
+  const timer = await response.json();
+  startCounting(timer)
+}
+
+export async function startCounting(timer){
+  const nowTimestamp = await moment().unix();
+  const timeSinceStart = nowTimestamp - timer.timestamp;
+  const timeRemaining = timer.amount - timeSinceStart;
+  stopwatch.update(timeRemaining)
+  stopwatch.start()
+}
+
+const stopwatch = new Stopwatch()
+
+getTimer()
+
+

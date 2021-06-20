@@ -1,12 +1,12 @@
 export default async function generateQuote() {
-    const quote = document.querySelector("blockquote p");
-    const cite = document.querySelector("blockquote cite");
+    const quoteContent = document.querySelector("#quote-content");
+    const source = document.querySelector("#source-title");
     const response = await fetch("https://api.quotable.io/random");
     const data = await response.json();
     if (response.ok) {
-        quote.textContent = data.content;
-        cite.textContent = data.author;
+        quoteContent.textContent = data.content;
+        source.textContent = data.author;
     } else {
-        quote.textContent = "An error occured";
+        quoteContent.textContent = "An error occured";
     }
 }
