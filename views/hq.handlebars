@@ -10,18 +10,21 @@
     {{#each todos as |todo|}}
       <a
         class="button {{todo.colour}} notification hq-todo-list"
-        href="/todo"
+        data-id="{{todo.id}}"
+        data-title="{{todo.title}}"
+        data-colour="{{todo.colour}}"
       ><h2 class="has-text-centered">
-            {{todo.title}}
-          </h2>
+          {{todo.title}}
+        </h2>
       </a>
     {{/each}}
 
   </div>
-  <div class="card current-tasks">
-    <h2 class="has-text-black has-text-centered">Study Time Remaining:</h2>
-    <p class="has-text-black time-title" id="time-title">
-    No Study Time Set
+  <div class="card current-tasks is-hidden" id="hq-timer-container">
+    <h2 class="has-text-black has-text-centered" id="time-heading"></h2>
+    <p class="has-text-black time-title" id="hq-time-title">
     </p>
   </div>
 </section>
+
+<script src="js/hq/hq.js" type="module"></script>

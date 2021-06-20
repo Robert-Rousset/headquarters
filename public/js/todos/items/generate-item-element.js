@@ -31,7 +31,7 @@ export default function generateItem(item, colourString) {
   newItem.querySelector(".confirm-edit-item-button").onclick = function (
     event
   ) {
-    items.confirmEdit();
+    items.confirmEdit(event);
   };
   newItem.querySelector(".delete").onclick = deleteItem;
   return newItem;
@@ -55,9 +55,9 @@ function hideShowConfirmEditButton(event) {
     ".confirm-edit-item-button"
   );
   if (this.value.length > 0) {
-    updateItemButton.classList.remove("is-hidden");
+    updateItemButton.classList.remove("is-fade");
   } else {
-    updateItemButton.classList.add("is-hidden");
+    updateItemButton.classList.add("is-fade");
   }
 }
 
