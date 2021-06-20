@@ -1,3 +1,5 @@
+import {startCounting} from "../main.js"
+
 export default async function (startSeconds) {
     try {
       const response = await fetch("/api/timer", {
@@ -11,7 +13,7 @@ export default async function (startSeconds) {
       });
       if (response.ok) {
         const timer = await response.json()
-        console.log("YO", timer)
+        startCounting(timer)
       }
     } catch (err) {
       console.log(err);

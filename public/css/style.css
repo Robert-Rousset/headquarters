@@ -105,6 +105,7 @@ h2 {
   justify-content: center;
   background-color: #375a7f;
   padding-bottom: 0.5rem;
+  width: 80%;
 }
 
 #quote-card-body {
@@ -122,7 +123,7 @@ h2 {
 
 .card {
   margin: auto;
-  width: 80%;
+  width: 95%;
 }
 
 .card h2 {
@@ -152,6 +153,38 @@ iframe {
 
 #login, #signup {
   width: 10rem;
+}
+
+.hq-card {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 2rem;
+}
+
+.current-tasks {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: rgba(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+
+.hq-todo-list{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hq-todo-list h2 {
+  white-space: nowrap;
+  overflow: scroll;
+  text-overflow: ellipsis;
+}
+
+.time-title {
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 html,

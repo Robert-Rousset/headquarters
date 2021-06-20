@@ -2,8 +2,10 @@ const router = require("express").Router();
 const withAuth = require("../utils/auth");
 const { User } = require("../models");
 
-router.get("/", withAuth, (req, res) => {
-  res.render("hq");
+router.get("/", withAuth, async (req, res) => {
+  const user = await User.findByPk(req.session.userId);
+  const todos = (await user.getTodos()).map((todo) => todo.dataValues);
+  res.render("hq", {todos});
 });
 
 router.get("/todo", withAuth, async (req, res) => {
