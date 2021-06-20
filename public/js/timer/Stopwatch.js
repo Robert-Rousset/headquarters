@@ -1,3 +1,5 @@
+import convertSecondsToMinutes from "./convert-seconds-to-minutes.js"
+
 export default class {
     constructor(startSeconds) {
         this.seconds = startSeconds;
@@ -22,7 +24,7 @@ export default class {
             timer.seconds -= 1;
             const counter = document.querySelector("#time-title")
             if(!counter) return
-            counter.innerHTML = timer.seconds;
+            counter.innerHTML = convertSecondsToMinutes(timer.seconds);
         } else {
             timer.complete();
         }
