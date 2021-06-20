@@ -1,4 +1,5 @@
 import Stopwatch from "./Stopwatch.js";
+import sendTimerRequest from "./send-timer-request.js"
 
 export default {
   init() {
@@ -23,7 +24,7 @@ export default {
   },
 };
 
-function confirmTimerSettings() {
+async function confirmTimerSettings() {
   const selectedTimeString = document.querySelector("select").value;
   const arrayOfStrings = selectedTimeString.split(" ");
   const amount = Number(arrayOfStrings[0]);
@@ -35,6 +36,5 @@ function confirmTimerSettings() {
       : units === "minutes"
       ? amount * 60
       : amount * 60 * 60;
-  const stopwatch = new Stopwatch(startSeconds);
-  stopwatch.start();
+  sendTimerRequest(startSeconds)
 }

@@ -1,20 +1,16 @@
-async function toggleLoginModal(event) {
-  event.preventDefault();
+import generateQuote from "./inspire/generate-quote.js"
 
+async function toggleLoginModal(_event) {
   const modal = document.querySelector("#login-modal");
   modal.classList.toggle("is-active");
 }
 
-async function toggleSignupModal(event) {
-  event.preventDefault();
-
+async function toggleSignupModal(_event) {
   const modal = document.querySelector("#signup-modal");
   modal.classList.toggle("is-active");
 }
 
-
-const login = async (event) => {
-  
+const login = async (_event) => {
     const email = document.querySelector('#login-email').value.trim();
     const password = document.querySelector('#login-password').value.trim();
   
@@ -34,8 +30,7 @@ const login = async (event) => {
   };
 
 
-async function signup(event) {
-
+async function signup(_event) {
   const email = document.querySelector("#signup-email").value.trim();
   const password = document.querySelector("#signup-password").value.trim();
 
@@ -70,28 +65,29 @@ function isItSignupEnter(event){
   }
 }
 
-document.querySelector("#login-confirm").addEventListener("click", login)
+document.querySelector("#login-confirm").onclick = login;
 
-document.querySelector("#login-password").addEventListener("keyup", isItLoginEnter);
+document.querySelector("#signup-confirm").onclick = signup;
 
-document.querySelector("#signup-confirm").addEventListener("click", signup);
-
-document.querySelector("#signup-password").addEventListener("keyup", isItSignupEnter)
-
-document.querySelector("#signup").addEventListener("click", toggleSignupModal);
+document.querySelector("#signup").onclick = toggleSignupModal;
 document
   .querySelector("#signup-background")
-  .addEventListener("click", toggleSignupModal);
+  .onclick = toggleSignupModal;
 document
   .querySelector("#signup-delete")
-  .addEventListener("click", toggleSignupModal);
+  .onclick = toggleSignupModal;
 
-document.querySelector("#login").addEventListener("click", toggleLoginModal);
+document.querySelector("#login").onclick = toggleLoginModal;
 document
   .querySelector("#login-background")
-  .addEventListener("click", toggleLoginModal);
+  .onclick = toggleLoginModal;
 document
   .querySelector("#login-delete")
-  .addEventListener("click", toggleLoginModal);
+  .onclick = toggleLoginModal;
 
+document.querySelector("#signup-password").onkeyup = isItSignupEnter;
+
+document.querySelector("#login-password").onkeyup = isItLoginEnter;
+
+generateQuote();
 

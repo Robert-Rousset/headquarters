@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const withAuth = require("../utils/auth");
-const { User, Todo } = require("../models");
+const { User } = require("../models");
 
 router.get("/", withAuth, (req, res) => {
   res.render("hq");

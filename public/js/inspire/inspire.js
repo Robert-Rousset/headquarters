@@ -3,8 +3,8 @@ import hideAndShowContent from "./hide-and-show-content.js";
 
 function init() {
     document.addEventListener("DOMContentLoaded", () => {
-        const button = document.querySelector("button");
-        button.addEventListener("click", generateQuote);
+        const newQuoteButton = document.querySelector("#new-quote-button");
+        newQuoteButton.addEventListener("click", generateQuote);
         generateQuote();
         hideAndShowContent();
     });
