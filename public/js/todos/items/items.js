@@ -28,11 +28,17 @@ export default {
     mainList.append(addNewItemItem);
   },
 
-  confirmAdd(_event) {
+  confirmAdd(event) {
+    if (Array.from(event.currentTarget.classList).includes("is-fade")) {
+      return;
+    }
     sendItemRequest(`/api/todos/${this.todo.id}`, "POST");
   },
 
-  confirmEdit(_event) {
+  confirmEdit(event) {
+    if (Array.from(event.currentTarget.classList).includes("is-fade")) {
+      return;
+    }
     sendItemRequest(`/api/items/update-item/${this.selectedItemId}`, "PUT");
   },
 };
