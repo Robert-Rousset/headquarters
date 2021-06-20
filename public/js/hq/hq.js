@@ -1,5 +1,3 @@
-import items from "../todos/items/items.js";
-
 const hqTodoLists = Array.from(document.querySelectorAll(".hq-todo-list"));
 hqTodoLists.forEach(hqTodoList => {
   hqTodoList.onclick = hqTodoListClick;
@@ -11,6 +9,5 @@ function hqTodoListClick(_event) {
     title: this.dataset.title,
     colour: this.dataset.colour,
   };
-  document.location.replace("/todo");
-  items(todo);
+  document.location.replace(`/todo/${todo.id}`);
 }

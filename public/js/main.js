@@ -7,6 +7,10 @@ window.onload = function () {
   if (currentpage === "") {
     currentpage = "hq";
   }
+
+  if (!isNaN(Number(currentpage))) {
+    currentpage = "todo";
+  }
   const activeTab = document.querySelector(`#${currentpage}`).parentElement;
   activeTab.classList.add("is-active");
 };
