@@ -66,7 +66,7 @@ async function getTimer() {
 
 export async function startCounting(timer) {
   if (!timer) return;
-  const nowTimestamp = moment.now();
+  const nowTimestamp = moment().unix();
   const timeSinceStart = nowTimestamp - timer.timestamp;
   const timeRemaining = timer.amount - timeSinceStart;
   stopwatch.update(timeRemaining);
