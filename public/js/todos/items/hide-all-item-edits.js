@@ -13,7 +13,7 @@ export default function hideAllItemEdits() {
   Array.from(document.querySelectorAll(".confirm-edit-item-button")).forEach(
     confirmEditItemButton => confirmEditItemButton.classList.add("is-hidden")
   );
-  Array.from(document.querySelectorAll("input")).forEach(input =>
+  Array.from(document.querySelectorAll(".item input")).forEach(input =>
     input.classList.add("is-hidden")
   );
   document.querySelector(".confirm-add-item-button").classList.add("is-fade");
