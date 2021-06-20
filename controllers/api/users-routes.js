@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { User, Todo } = require("../../models");
+const sendEmail = require("../mail");
 
+//Sign up
 router.post("/", async (req, res) => {
   try {
     const user = await User.create({
@@ -13,6 +15,7 @@ router.post("/", async (req, res) => {
       req.session.userId = user.id;
       res.status(200).json(user);
     });
+    sendEmail(req.body.email);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

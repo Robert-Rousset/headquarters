@@ -23,6 +23,7 @@
     "handlebars-dateformat": "^1.1.1",
     "moment": "^2.29.1",
     "mysql2": "^2.2.5",
+    "nodemailer": "^6.6.2",
     "nodemon": "^2.0.7",
     "sequelize": "^6.3.5"
   }

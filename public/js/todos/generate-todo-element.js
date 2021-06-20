@@ -5,18 +5,18 @@ import sendTodoRequest from "./send-todo-request.js";
 export default function (todo) {
   const newTodo = document.createElement("li");
   newTodo.innerHTML = `
-<div
-  class="todo button ${todo.colour} notification"
-  data-id="${todo.id}"
-  data-title="${todo.title}"
-  data-colour="${todo.colour}"
->
-  <div class="edit-todo-button">
-    <i class="fas fa-pen-square"></i>
+  <div
+    class="todo button ${todo.colour} notification"
+    data-id="${todo.id}"
+    data-title="${todo.title}"
+    data-colour="${todo.colour}"
+  >
+    <div class="edit-todo-button">
+      <i class="fas fa-pen-square"></i>
+    </div>
+    <p>${todo.title}</p>
+    <button class="delete" aria-label="close"></button>
   </div>
-  <p>${todo.title}</p>
-  <button class="delete" aria-label="close"></button>
-</div>
 `;
   newTodo.onclick = onTodoClick;
   newTodo.querySelector(".edit-todo-button").onclick = editTodo;
