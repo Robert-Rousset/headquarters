@@ -15,7 +15,7 @@ router.put("/", async (req, res) => {
   try {
     const user = await User.findByPk(req.session.userId);
     let timer = await user.getTimer();
-    const timestamp = moment.now();
+    const timestamp = moment().unix();
     if (!timer) {
       timer = await Timer.create({
         amount: req.body.amount,
