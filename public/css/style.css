@@ -296,4 +296,7 @@ body {
   .tabs ul {
     justify-content: center;
   }
+  #quote-content {
+    font-size: 1.5rem;
+  }
 }
