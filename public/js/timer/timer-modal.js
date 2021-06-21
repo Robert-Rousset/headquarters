@@ -1,4 +1,4 @@
-import sendTimerRequest from "./send-timer-request.js"
+import sendTimerRequest from "./send-timer-request.js";
 
 export default {
   init() {
@@ -27,13 +27,12 @@ async function confirmTimerSettings() {
   const selectedTimeString = document.querySelector("select").value;
   const arrayOfStrings = selectedTimeString.split(" ");
   const amount = Number(arrayOfStrings[0]);
-  document.getElementById("time-title").innerHTML = amount;
   const units = arrayOfStrings[1];
   const startSeconds =
     units === "seconds"
       ? amount
       : units === "minutes"
-        ? amount * 60
-        : amount * 60 * 60;
-  sendTimerRequest(startSeconds)
+      ? amount * 60
+      : amount * 60 * 60;
+  sendTimerRequest(startSeconds);
 }
