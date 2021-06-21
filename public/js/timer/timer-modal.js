@@ -1,4 +1,3 @@
-import Stopwatch from "./Stopwatch.js";
 import sendTimerRequest from "./send-timer-request.js"
 
 export default {
@@ -34,7 +33,7 @@ async function confirmTimerSettings() {
     units === "seconds"
       ? amount
       : units === "minutes"
-      ? amount * 60
-      : amount * 60 * 60;
+        ? amount * 60
+        : amount * 60 * 60;
   sendTimerRequest(startSeconds)
 }
