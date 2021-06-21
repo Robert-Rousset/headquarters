@@ -42,11 +42,7 @@ h2 {
 
 #main-list li {
   margin-top: 1rem;
-}
-
-.todo {
-  width: 100%;
-  justify-content: flex-start;
+  display: flex;
 }
 
 .colours {
@@ -76,15 +72,19 @@ h2 {
   margin-left: 1rem;
 }
 
-ul li {
-  display: flex;
-}
-
 .item {
   margin-left: 5rem;
   width: 100%;
   display: flex;
   justify-content: flex-start;
+  height: fit-content;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+.item-content {
+  text-align: left;
+  white-space: initial;
 }
 
 #add-new-item-item {
@@ -167,6 +167,26 @@ ul li {
   margin-bottom: 0.5rem;
 }
 
+.todo {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.todo p {
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.todo-title {
+  height: fit-content;
+}
+
+.todo-title p {
+  text-align: left;
+  white-space: initial;
+}
+
 #source-title {
   padding: 1rem;
 }
@@ -227,7 +247,7 @@ iframe {
   margin-right: auto;
 }
 
-.hq-todo-list h2 {
+.hq-todo-list p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -263,4 +283,17 @@ body {
   justify-content: center;
   align-items: center;
   padding: 5rem;
+}
+
+#inspire-tabs-ul {
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .tabs a {
+    padding: 0.3rem;
+  }
+  .tabs ul {
+    justify-content: center;
+  }
 }

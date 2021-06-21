@@ -20,6 +20,7 @@ export default {
     const todoTitleElement = generateTodoElement(this.todo);
     todoTitleElement.querySelector(".edit-todo-button").remove();
     todoTitleElement.querySelector(".delete").remove();
+    todoTitleElement.querySelector(".todo").classList.add("todo-title");
     mainList.append(todoTitleElement);
     items.forEach(item => {
       mainList.append(generateItemElement(item, this.todo.colour));
