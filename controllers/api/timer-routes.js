@@ -15,16 +15,15 @@ router.put("/", async (req, res) => {
   try {
     const user = await User.findByPk(req.session.userId);
     let timer = await user.getTimer();
-    const timestamp = moment().unix();
     if (!timer) {
       timer = await Timer.create({
         amount: req.body.amount,
-        timestamp: timestamp,
+        timestamp: req.body.timestamp,
       });
       await timer.setUser(user);
     } else {
       timer.amount = req.body.amount;
-      timer.timestamp = timestamp;
+      timer.timestamp = req.body.timestamp;
       await timer.save();
     }
 
