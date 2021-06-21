@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { User, Todo } = require("../../models");
-const sendEmail = require("../mail");
 
 //Sign up
 router.post("/", async (req, res) => {
@@ -15,7 +14,6 @@ router.post("/", async (req, res) => {
       req.session.userId = user.id;
       res.status(200).json(user);
     });
-    sendEmail(req.body.email);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -79,7 +77,7 @@ router.post("/create-todo", async (req, res) => {
       colour: req.body.colour,
     });
     await newTodo.setUser(user);
-    const todos = (await user.getTodos()).map((todo) => todo.dataValues);
+    const todos = (await user.getTodos()).map(todo => todo.dataValues);
     res.status(200).json(todos);
   } catch (err) {
     res.status(500).send(err);
@@ -101,7 +99,7 @@ router.put("/update-todo/:id", async (req, res) => {
         },
       }
     );
-    const todos = (await user.getTodos()).map((todo) => todo.dataValues);
+    const todos = (await user.getTodos()).map(todo => todo.dataValues);
     res.status(200).json(todos);
   } catch (err) {
     res.status(500).send(err);
