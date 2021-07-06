@@ -2,6 +2,7 @@ const path = require("path");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
+const compression = require("compression");
 
 const routes = require("./controllers");
 const sequelize = require("./config/connection");
@@ -23,6 +24,18 @@ const sess = {
 };
 
 app.use(session(sess));
+
+app.use(compression({ filter: shouldCompress }));
+
+function shouldCompress(req, res) {
+  if (req.headers["x-no-compression"]) {
+    // don't compress responses with this request header
+    return false;
+  }
+
+  // fallback to standard filter function
+  return compression.filter(req, res);
+}
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
